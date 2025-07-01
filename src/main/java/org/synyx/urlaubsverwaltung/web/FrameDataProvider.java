@@ -131,6 +131,7 @@ public class FrameDataProvider implements DataProviderInterface {
         final String overtime = "/web/overtime";
 
         elements.add(new NavigationItemDto("basic-overview-link", overview, "nav.basic.overview", "house", url.equals(overview)));
+        elements.add(new NavigationItemDto("basic-absences-link", "/web/global-absences", "Firmenkalender", "calendar"));
         elements.add(new NavigationItemDto("basic-application-link", application, "nav.basic.absence-todos", "list-todo", url.equals(application)));
         elements.add(new NavigationItemDto("basic-absence-overview-link", absenceOverview, "nav.basic.absence-overview", "calendar-range", url.equals(absenceOverview)));
 
