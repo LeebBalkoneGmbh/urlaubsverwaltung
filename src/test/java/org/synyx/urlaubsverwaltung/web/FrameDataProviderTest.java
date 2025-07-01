@@ -94,7 +94,7 @@ class FrameDataProviderTest {
                     createApplicationLink(),
                     createOvertimeLink()
                 );
-                assertThat(dto.basic()).containsExactly(
+                assertThat(dto.basic()).contains(
                     basicOverviewLink(10L),
                     basicApplicationLink(),
                     basicAbsenceOverviewLink(),

@@ -127,6 +127,7 @@ public class FrameDataProvider implements DataProviderInterface {
         final String overtime = "/web/overtime";
 
         elements.add(new NavigationItemDto("basic-overview-link", overview, "nav.basic.overview", url.equals(overview)));
+        elements.add(new NavigationItemDto("basic-absences-link", "/web/global-absences", "Firmenkalender", "calendar"));
         elements.add(new NavigationItemDto("basic-application-link", application, "nav.basic.absence-todos", url.equals(application)));
         elements.add(new NavigationItemDto("basic-absence-overview-link", absenceOverview, "nav.basic.absence-overview", url.equals(absenceOverview)));
         elements.add(new NavigationItemDto("basic-absence-link", myApplications, "nav.basic.my-absences", url.equals(myApplications) || url.matches("/web/persons/\\d+/applications$")));
