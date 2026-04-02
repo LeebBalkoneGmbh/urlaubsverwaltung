@@ -64,7 +64,7 @@ public class EventHandlerApplicationCancelledEvent {
         }
         
         var application = event.application();
-        var applier = application.getApplier().getNiceName();
+        var consumer = application.getPerson().getNiceName();
         var days = workDaysCountService.getWorkDaysCount(application.getDayLength(), application.getStartDate(), application.getEndDate(), application.getApplier()).toBigInteger();
         
         var startTimestampString = application.getStartDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
@@ -82,7 +82,7 @@ public class EventHandlerApplicationCancelledEvent {
         sb.append("<tr><td colspan=\"2\">Eine genehmigte Abwesenheit wurde storniert:</td></tr>");
         sb.append("<tr><td colspan=\"2\"><span>&nbsp;</span></td></tr>");
         sb.append("<tr><td colspan=\"2\">---------------[ S T O R N O ]---------------</td></tr>");
-        sb.append("<tr><td>Mitarbeiter:</td><td><b>").append(applier).append("</b></td></tr>");
+        sb.append("<tr><td>Mitarbeiter:</td><td><b>").append(consumer).append("</b></td></tr>");
         sb.append("<tr><td colspan=\"2\"><span>&nbsp;</span></td></tr>");
         sb.append("<tr><td>Von:</td><td><b>").append(startTimestampString).append("</b></td></tr>");
         sb.append("<tr><td>Bis:</td><td><b>").append(endTimestampString).append("</b></td></tr>");
