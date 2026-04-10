@@ -14,9 +14,9 @@
       <script defer type="module" asset:src="absences_overview.js"></script>
     </th:block>
   </head>
-  <body th:replace="~{_layout::body(~{::main}, ~{})}">
+  <body th:replace="~{_layout::body(~{::main})}">
     <main th:fragment="main">
-      <div class="max-w-6xl mx-auto px-4 lg:px-12 xl:px-0">
+      <div class="content-container">
         <div
           th:replace="~{fragments/section-heading::section-heading(~{::person-basedata-heading-body}, ~{::person-basedata-heading-actions})}"
         >
@@ -36,10 +36,10 @@
             </div>
           </th:block>
         </div>
-        <div class="mt-4 md:mt-6">
+        <div class="mt-4 @3xl/main:mt-6">
           <form action="#" th:action="@{/web/global-absences}" id="absenceOverviewForm" class="print:hidden px-4">
             <div
-              class="items-baseline md:grid gap-x-8 gap-y-4"
+              class="items-baseline @3xl/main:grid gap-x-8 gap-y-4"
               style="grid-template-columns: min-content minmax(0, 22rem) 1fr"
             >
               <label
@@ -76,13 +76,13 @@
               </span>
 
               <label
-                class="mt-4 md:mt-0 mb-1 md:mb-0 m-0 col-start-1 row-start-2"
+                class="mt-4 mb-1 col-start-1 row-start-2 @3xl/main:mt-0 @3xl/main:mb-0"
                 for="monthSelect"
                 th:text="#{absences.overview.month}"
               >
                 Month
               </label>
-              <span class="md:mt-0 col-start-2 col-end-2 row-start-2">
+              <span class="@3xl/main:mt-0 col-start-2 col-end-2 row-start-2">
                 <select
                   th:replace="~{fragments/select::one(id='monthSelect', name='month', options=~{::month-select-options})}"
                   id="monthSelect"
@@ -119,7 +119,7 @@
                 
               <th:block th:if="${not #lists.isEmpty(visibleDepartments)}">
                 <label
-                  class="mt-4 md:mt-0 mb-1 md:mb-2 m-0 col-start-1 col-end-1 row-start-3"
+                  class="mt-4 mb-1 col-start-1 col-end-1 row-start-3 @3xl/main:mt-0 @3xl/main:mb-2"
                   for="departmentSelect"
                   th:text="#{absences.overview.department}"
                 >
@@ -139,21 +139,21 @@
                     ></option>
                   </th:block>
                 </select>
-                <span class="help-block hidden md:inline text-sm col-start-3 row-start-3">
-                  <svg th:replace="~{icon/info::svg(className='w-4 h-4')}"></svg>
+                <p class="uv-help-block hidden @3xl/main:flex col-start-3 row-start-3">
+                  <svg th:replace="~{icon/info::svg(className='uv-help-block-icon')}"></svg>
                   <th:block th:text="#{absences.overview.department.help}"></th:block>
-                </span>
+                </p>
               </th:block>
             </div>
           </form>
         </div>
       </div>
-      <div class="max-w-6xl mx-auto px-4 lg:px-12 xl:px-0">
+      <div class="max-w-7xl px-8 mx-auto mt-8">
         <hr class="print:hidden" />
         <div th:each="month : ${absenceOverview.months}" class="mb-14 print:break-inside-avoid">
           <h2
             th:id="${'absence-table-' + month.nameOfMonth}"
-            class="text-2xl m-0"
+            class="text-2xl"
             th:classappend="${#lists.size(absenceOverview.months) == 1 ? 'hidden print:block' : ''}"
           >
             <th:block th:text="${month.nameOfMonth}" />
@@ -204,7 +204,7 @@
               <tr role="row" th:each="person : ${month.persons}">
                 <th
                   scope="row"
-                  class="p-0.5 print:hidden sticky -left-px bg-gradient-to-r from-white dark:from-zinc-900 dark:via-zinc-900 z-40 border-l-0 z-10"
+                  class="p-0.5 print:hidden sticky -left-px bg-linear-to-r from-white dark:from-zinc-900 dark:via-zinc-900 border-l-0 z-10"
                 >
                   <div class="print:hidden text-blue-50 dark:text-sky-800">
                     <img
@@ -216,7 +216,7 @@
                 <th scope="row" class="py-0.5 pl-2 pr-4 print:py-1.5">
                   <a
                     th:href="@{/web/person/__${person.id}__/overview}"
-                    class="icon-link print:no-link"
+                    class="icon-link"
                     data-turbo="false"
                   >
                     <div class="flex flex-col justify-center leading-tight">
