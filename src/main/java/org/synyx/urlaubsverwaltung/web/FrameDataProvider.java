@@ -125,9 +125,10 @@ public class FrameDataProvider implements DataProviderInterface {
         final String myApplications = MY_APPLICATIONS_ANONYMOUS_PATH;
         final String mySicknotes = MY_SICKNOTES_ANONYMOUS_PATH;
         final String overtime = "/web/overtime";
+        final String globalAbsences = "/web/global-absences";
 
         elements.add(new NavigationItemDto("basic-overview-link", overview, "nav.basic.overview", url.equals(overview)));
-        elements.add(new NavigationItemDto("global-absences-link", "/web/global-absences", "nav.global-absences.title", "calendar"));
+        elements.add(new NavigationItemDto("global-absences-link", globalAbsences, "nav.global-absences.title", url.equals(globalAbsences)));
         elements.add(new NavigationItemDto("basic-application-link", application, "nav.basic.absence-todos", url.equals(application)));
         elements.add(new NavigationItemDto("basic-absence-overview-link", absenceOverview, "nav.basic.absence-overview", url.equals(absenceOverview)));
         elements.add(new NavigationItemDto("basic-absence-link", myApplications, "nav.basic.my-absences", url.equals(myApplications) || url.matches("/web/persons/\\d+/applications$")));
