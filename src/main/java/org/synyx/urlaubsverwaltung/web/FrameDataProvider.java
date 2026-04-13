@@ -123,7 +123,7 @@ public class FrameDataProvider implements DataProviderInterface {
         final String application = "/web/application";
         final String absenceOverview = "/web/absences";
         final String myApplications = MY_APPLICATIONS_ANONYMOUS_PATH;
-        final String mySicknotes = MY_SICKNOTES_ANONYMOUS_PATH;
+        /*final String mySicknotes = MY_SICKNOTES_ANONYMOUS_PATH;*/
         final String overtime = "/web/overtime";
         final String globalAbsences = "/web/global-absences";
 
@@ -132,7 +132,7 @@ public class FrameDataProvider implements DataProviderInterface {
         elements.add(new NavigationItemDto("basic-application-link", application, "nav.basic.absence-todos", url.equals(application)));
         elements.add(new NavigationItemDto("basic-absence-overview-link", absenceOverview, "nav.basic.absence-overview", url.equals(absenceOverview)));
         elements.add(new NavigationItemDto("basic-absence-link", myApplications, "nav.basic.my-absences", url.equals(myApplications) || url.matches("/web/persons/\\d+/applications$")));
-        elements.add(new NavigationItemDto("basic-sicknote-link", mySicknotes, "nav.basic.my-sicknotes", url.equals(mySicknotes) || url.matches("/web/persons/\\d+/sicknotes$")));
+        /*elements.add(new NavigationItemDto("basic-sicknote-link", mySicknotes, "nav.basic.my-sicknotes", url.equals(mySicknotes) || url.matches("/web/persons/\\d+/sicknotes$")));*/
 
         if (overtimeEnabled(settings.getOvertimeSettings())) {
             elements.add(new NavigationItemDto("basic-overtime-link", overtime, "nav.basic.my-overtimes", url.equals(overtime)));
@@ -164,7 +164,7 @@ public class FrameDataProvider implements DataProviderInterface {
             elements.add(new NavigationItemDto("company-application-link", applications, "nav.company.applications", url.equals(applications)));
         }
 
-        final boolean canViewSickNotes = user.hasRole(OFFICE) || user.hasRole(SICK_NOTE_VIEW);
+        /*final boolean canViewSickNotes = user.hasRole(OFFICE) || user.hasRole(SICK_NOTE_VIEW);
         if (canViewSickNotes) {
 
             final String sickdays = "/web/sickdays";
@@ -181,7 +181,7 @@ public class FrameDataProvider implements DataProviderInterface {
                 new NavigationItemDto("company-sicknote-overview-link", sickdays, "nav.company.sicknotes.overview", sickdaysActive),
                 new NavigationItemDto("company-sicknote-statistics-link", statistics, "nav.company.sicknotes.statistics", statisticsActive, "navigation-sick-notes-statistics-link")
             )));
-        }
+        }*/
 
         return elements;
     }
