@@ -156,7 +156,7 @@ class ApplicationInteractionServiceImpl implements ApplicationInteractionService
         // Department head can be mighty only in some cases
         final boolean isDepartmentHeadOfPerson = departmentService.isDepartmentHeadAllowedToManagePerson(privilegedUser, application.getPerson());
         final boolean isPersonSecondStageAuthorityOfApprover = departmentService.isSecondStageAuthorityAllowedToManagePerson(application.getPerson(), privilegedUser);
-        if (isDepartmentHeadOfPerson && !isOwnApplication && !isPersonSecondStageAuthorityOfApprover) {
+        if (isDepartmentHeadOfPerson && !isPersonSecondStageAuthorityOfApprover) {
             if (application.isTwoStageApproval()) {
                 return allowTemporary(application, privilegedUser, comment);
             }
