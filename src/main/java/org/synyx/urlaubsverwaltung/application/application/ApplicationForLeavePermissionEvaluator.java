@@ -21,7 +21,7 @@ final class ApplicationForLeavePermissionEvaluator {
 
     static boolean isAllowedToAllowWaitingApplication(Application application, Person signedInUser, boolean isDepartmentHeadOfPerson, boolean isSecondStageAuthorityOfPerson) {
         return application.hasStatus(WAITING)
-            && (signedInUser.hasRole(BOSS) || ((isDepartmentHeadOfPerson || isSecondStageAuthorityOfPerson) && !application.getPerson().equals(signedInUser)));
+            && (signedInUser.hasRole(BOSS) || ((isDepartmentHeadOfPerson || isSecondStageAuthorityOfPerson)));
     }
 
     static boolean isAllowedToAllowTemporaryAllowedApplication(Application application, Person signedInUser, boolean isSecondStageAuthorityOfPerson) {
@@ -31,7 +31,6 @@ final class ApplicationForLeavePermissionEvaluator {
 
     static boolean isAllowedToRejectApplication(Application application, Person signedInUser, boolean isDepartmentHeadOfPerson, boolean isSecondStageAuthorityOfPerson) {
         return (application.hasStatus(WAITING) || application.hasStatus(TEMPORARY_ALLOWED))
-            && !application.getPerson().equals(signedInUser)
             && (signedInUser.hasRole(BOSS) || isDepartmentHeadOfPerson || isSecondStageAuthorityOfPerson);
     }
 
@@ -76,7 +75,7 @@ final class ApplicationForLeavePermissionEvaluator {
 
     static boolean isAllowedToReferApplication(Application application, Person signedInUser, boolean isDepartmentHeadOfPerson, boolean isSecondStageAuthorityOfPerson) {
         return (application.hasStatus(WAITING) || application.hasStatus(TEMPORARY_ALLOWED))
-            && (signedInUser.hasRole(BOSS) || signedInUser.hasRole(OFFICE) || ((isDepartmentHeadOfPerson || isSecondStageAuthorityOfPerson) && !application.getPerson().equals(signedInUser)));
+            && (signedInUser.hasRole(BOSS) || signedInUser.hasRole(OFFICE) || ((isDepartmentHeadOfPerson || isSecondStageAuthorityOfPerson)));
     }
 
     static boolean isAllowedToCommentApplication(Person signedInUser, boolean isDepartmentHeadOfPerson, boolean isSecondStageAuthorityOfPerson) {
