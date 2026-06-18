@@ -1,5 +1,12 @@
 <!doctype html>
-<html lang="en" th:lang="${language}" th:class="|theme-${theme}|" xmlns:th="http://www.thymeleaf.org">
+<html
+  lang="en"
+  th:lang="${language}"
+  th:class="|theme-${theme}|"
+  th:data-nav-collapsed="${navigationCollapsed ? 'true' : null}"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:asset="http://www.w3.org/1999/xhtml"
+>
   <head
     th:replace="~{_layout::head(title=~{::title}, styles=~{::styles}, scriptsDefer=~{::scriptsDefer}, preload=~{::preload})}"
   >
@@ -16,10 +23,8 @@
   </head>
   <body th:replace="~{_layout::body(~{::main})}">
     <main th:fragment="main">
-      <div class="content-container">
-        <div
-          th:replace="~{fragments/section-heading::section-heading(~{::person-basedata-heading-body}, ~{::person-basedata-heading-actions})}"
-        >
+      <div class="content-container content--max-w">
+        <div th:replace="~{fragments/section-heading::section-heading(~{::person-basedata-heading-body}, ~{::person-basedata-heading-actions})}">
           <th:block th:ref="person-basedata-heading-body">
             <h1 th:text="#{absences.overview.title}">Absence Overview</h1>
           </th:block>
@@ -32,12 +37,11 @@
                   ><svg th:replace="~{icon/calendar::svg(className='w-5 h-5')}"></svg>&nbsp;
                   <span th:text="#{nav.global-absences.title}"></span>
                 </a>
-                <button th:replace="~{fragments/print::button}"></button>
             </div>
           </th:block>
         </div>
         <div class="mt-4 @3xl/main:mt-6">
-          <form action="#" th:action="@{/web/global-absences2}" id="absenceOverviewForm" class="print:hidden px-4">
+          <form action="#" th:action="@{/web/global-absences2}" id="absenceOverviewForm" class="px-4">
             <div
               class="items-baseline @3xl/main:grid gap-x-8 gap-y-4"
               style="grid-template-columns: min-content minmax(0, 22rem) 1fr"
@@ -242,7 +246,7 @@
                       <th:block th:text="#{application.data.hours.number}" />
                     </span>
                   </td>
-                  <td class="hidden-xs print:hidden">
+                  <td class="hidden-xs">
                     <div class="flex items-center justify-center">
                       <svg th:replace="~{icon/clock::svg(className='w-4 h-4')}"></svg>&nbsp;
                       <span>
