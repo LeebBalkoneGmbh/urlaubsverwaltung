@@ -132,7 +132,7 @@ public class FrameDataProvider implements DataProviderInterface {
         final String globalAbsences = "/web/global-absences";
 
         elements.add(new NavigationItemDto("basic-overview-link", overview, "nav.basic.overview", "house", url.equals(overview)));
-        elements.add(new NavigationItemDto("global-absences-link", globalAbsences, "nav.global-absences.title", url.equals(globalAbsences)));
+        elements.add(new NavigationItemDto("global-absences-link", globalAbsences, "nav.global-absences.title", "calendar-range", url.equals(globalAbsences)));
         elements.add(new NavigationItemDto("basic-application-link", application, "nav.basic.absence-todos", "list-todo", url.equals(application)));
         elements.add(new NavigationItemDto("basic-absence-overview-link", absenceOverview, "nav.basic.absence-overview", "calendar-range", url.equals(absenceOverview)));
 
