@@ -146,7 +146,7 @@ public class FrameDataProvider implements DataProviderInterface {
             new NavigationItemDto("basic-absence-statistics-link", myApplicationsStatistics, "nav.basic.my-absences.statistics", "", myApplicationsStatisticsActive)
         )));
 
-        elements.add(new NavigationItemDto("basic-sicknote-link", mySicknotes, "nav.basic.my-sicknotes", "briefcase-medical", url.equals(mySicknotes) || url.matches("/web/persons/\\d+/sicknotes$")));
+        /*elements.add(new NavigationItemDto("basic-sicknote-link", mySicknotes, "nav.basic.my-sicknotes", "briefcase-medical", url.equals(mySicknotes) || url.matches("/web/persons/\\d+/sicknotes$")));*/
 
         if (overtimeEnabled(settings.getOvertimeSettings())) {
             elements.add(new NavigationItemDto("basic-overtime-link", overtime, "nav.basic.my-overtimes", "clock-arrow-up", url.equals(overtime)));
