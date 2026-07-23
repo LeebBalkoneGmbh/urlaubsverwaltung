@@ -67,13 +67,16 @@ public class EventHandlerApplicationCancelledEvent {
         var consumer = application.getPerson().getNiceName();
         var days = workDaysCountService.getWorkDaysCount(application.getDayLength(), application.getStartDate(), application.getEndDate(), application.getApplier()).toBigInteger();
         
-        var startTimestampString = application.getStartDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
+        var timePattern = DateTimeFormatter.ofPattern("HH:mm:ss");
+        var datePattern = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        
+        var startTimestampString = application.getStartDate().format(datePattern);
         if (application.getStartTime() != null) {
-            startTimestampString = startTimestampString + " " + application.getStartTime().format(DateTimeFormatter.ISO_LOCAL_TIME);
+            startTimestampString = startTimestampString + " " + application.getStartTime().format(timePattern);
         }
-        var endTimestampString = application.getEndDate().format(DateTimeFormatter.ISO_LOCAL_DATE);
+        var endTimestampString = application.getEndDate().format(datePattern);
         if (application.getEndTime() != null) {
-            endTimestampString = endTimestampString + " " + application.getEndTime().format(DateTimeFormatter.ISO_LOCAL_TIME);
+            endTimestampString = endTimestampString + " " + application.getEndTime().format(timePattern);
         }
         var webUrl = this.mailProperties.getApplicationUrl() + "/web/application/" + application.getId();
         
