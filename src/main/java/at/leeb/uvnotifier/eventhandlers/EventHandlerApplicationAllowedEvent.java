@@ -67,7 +67,7 @@ public class EventHandlerApplicationAllowedEvent {
         var consumer = application.getPerson().getNiceName();
         var days = workDaysCountService.getWorkDaysCount(application.getDayLength(), application.getStartDate(), application.getEndDate(), application.getApplier()).toBigInteger();
         
-        var timePattern = DateTimeFormatter.ofPattern("hh:mm:ss");
+        var timePattern = DateTimeFormatter.ofPattern("HH:mm:ss");
         var datePattern = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         
         var startTimestampString = application.getStartDate().format(datePattern);
