@@ -157,7 +157,7 @@ public class GlobalAbsenceOverview2ViewController implements HasLaunchpad {
     private List<GlobalOverviewApplicationDto> getApplications(List<Person> person, DateRange dateRange, Locale locale) {
         var applications = applicationService.getApplicationsForACertainPeriodAndStatus(dateRange.startDate(), dateRange.endDate(), person, List.of(ApplicationStatus.ALLOWED))
                 .stream()
-                .map(application -> new ApplicationForLeave(application, workDaysCountService))
+                .map(application -> new ApplicationForLeave(application, workDaysCountService.getWorkDaysCountByYearForApplications(List.of(application)).get(application)))
                 .sorted(comparing(ApplicationForLeave::getStartDate))
                 .map(applicationForLeave -> overviewApplicationDto(applicationForLeave, locale))
                 .toList();
