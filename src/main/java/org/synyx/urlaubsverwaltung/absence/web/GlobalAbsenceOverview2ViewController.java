@@ -45,7 +45,6 @@ import org.synyx.urlaubsverwaltung.overview.GlobalOverviewApplicationDto;
 import org.synyx.urlaubsverwaltung.overview.OverviewVacationTypDto;
 import static org.synyx.urlaubsverwaltung.person.Role.BOSS;
 import static org.synyx.urlaubsverwaltung.person.Role.DEPARTMENT_HEAD;
-import static org.synyx.urlaubsverwaltung.person.Role.INACTIVE;
 import static org.synyx.urlaubsverwaltung.person.Role.OFFICE;
 import static org.synyx.urlaubsverwaltung.person.Role.SECOND_STAGE_AUTHORITY;
 import org.synyx.urlaubsverwaltung.workingtime.WorkDaysCountService;
@@ -124,7 +123,7 @@ public class GlobalAbsenceOverview2ViewController implements HasLaunchpad {
                     .filter(department -> selectedDepartmentNames.contains(department.getName()))
                     .map(Department::getMembers)
                     .flatMap(List::stream)
-                    .filter(member -> !member.hasRole(INACTIVE))
+                    .filter(member -> !member.isInactive())
                     .distinct()
                     .sorted(comparing(Person::getFirstName))
                     .toList();
@@ -266,13 +265,13 @@ public class GlobalAbsenceOverview2ViewController implements HasLaunchpad {
         final List<Person> relevantPersons = new ArrayList<>();
         if (person.hasRole(DEPARTMENT_HEAD)) {
             departmentService.getMembersForDepartmentHead(person).stream()
-                .filter(member -> !member.hasRole(INACTIVE))
+                .filter(member -> !member.isInactive())
                 .collect(toCollection(() -> relevantPersons));
         }
 
         if (person.hasRole(SECOND_STAGE_AUTHORITY)) {
             departmentService.getMembersForSecondStageAuthority(person).stream()
-                .filter(member -> !member.hasRole(INACTIVE))
+                .filter(member -> !member.isInactive())
                 .collect(toCollection(() -> relevantPersons));
         }
 
